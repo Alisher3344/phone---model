@@ -22,8 +22,8 @@ else{
     
     batteryPromise.then((batteryObject) => {
     let a =batteryObject.level;    
-    daraja.textContent=`${a*100}`
-    daraja2.textContent= `${a*100}`
+    daraja.textContent=`${a*100}`;
+    daraja2.textContent= `${a*100}`;
     });
   }, 1);
 
@@ -44,7 +44,6 @@ navigator.geolocation.getCurrentPosition(
 
   let batteryPromise = navigator.getBattery();
    
-
-
+  
 
   
