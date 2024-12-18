@@ -1,0 +1,93 @@
+
+.phone_img_Div{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative !important;
+}
+.bac_phone_big{
+    background-image: url(../unnamed.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 55px;
+    position:absolute;
+    width: 335px;
+    height: 710px;
+    backdrop-filter: blur(10px);
+}
+.bac_phone_small{
+    position: absolute;
+    background-color: rgb(51, 46, 46);
+    width: 120px;
+    height: 40px;
+    top: 25px;
+    border-radius:50px;
+}
+.bac_phone_big_2{
+    border-radius: 55px;
+    position: absolute;
+    width: 335px;
+    height: 710px;
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+}
+.big_time{
+    color:rgb(171, 16, 2);
+    padding: 20px;
+    font-size:100px;}
+
+    .batareaq{
+    position: absolute;
+    font-size: 10px;
+    top: 2px;
+    right:53px;
+   color: white;
+    }
+    .batareaw{
+        font-family: orbit;
+        position: absolute;
+        top:10px;
+        width: 30px;
+        right:40px;
+    }
+    .open_screen_anderBoard{
+        display: none;
+     justify-content: space-between;
+     position: absolute;
+     width: 300px;
+     height:80px;
+     backdrop-filter: blur(60px);
+     bottom: 40px;
+     border-radius: 50px;
+    }
+    .app_icon{
+        width: 60px;
+    }
+
+    .batarea_darajasi{
+        color: white;
+        top: 0px;
+    }
+    .open_screen{
+        border-radius: 55px;
+        position:absolute;
+        width: 335px;
+        height: 710px;
+    display: none;
+    }
+    .open_screen2{
+        border-radius: 55px;
+        position:relative;
+        width: 335px;
+        height: 710px;
+    }
+    .small_top_time{
+        position: absolute;
+color:white;
+top: -70px;
+left: 25px;
+    }
