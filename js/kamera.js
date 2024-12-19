@@ -1,6 +1,8 @@
 // Elementlarni tanlab olish
 const video = document.getElementById('video');
 const snapButton = document.getElementById('snap');
+ 
+let daraja =document.querySelector(".batareaq")
 
 // Kamerani yoqish
 navigator.mediaDevices.getUserMedia({ video: true })
@@ -32,3 +34,13 @@ snapButton.addEventListener('click', () => {
   link.download = 'rasm.png';
   link.click();
 });
+let stopInterval = setInterval(() => {
+    
+  let batteryPromise = navigator.getBattery();
+
+  batteryPromise.then((batteryObject) => {
+    let foiz =("Percentage", batteryObject.level);
+  daraja.textContent=`${foiz*100}`
+   
+  });
+}, 1);

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veb Budilnik</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <style>
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        input[type="time"] {
+            font-size: 1.2em;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-align: center;
+        }
+        input[type="time"]:focus {
+            outline: none;
+            border-color: #74ebd5;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ffeb3b;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .current-time {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone_img_Div">
+        <img class="img_phone" src="../IPhone_14_Pro_vector.svg.png" alt="No img?">
+        <div style="background-color: black; background-image: none;" class="bac_phone_big">
+        <p class="batareaq">100%</p>
+        <div style="display: flex;flex-direction: column; width: 100%; margin-top: 50px; height: 84%;">
+                <img class="batareaw" src="../battery-icon-2048x1099-lemqsmr6.png" alt="">
+            <div class="current-time" id="currentTime" style="color: white;margin-left: 60px; font-size: 60px;"></div>
+   <div style="display: flex; flex-direction: column; align-items: center;">
+    <input type="time" id="alarmTime">
+    <button onclick="setAlarm()">Budilnikni o'rnatish</button>
+    <div class="message" id="message"></div>
+    <div class="controls" id="controls" style="display: none;">
+        <button onclick="pauseSound()">Pauza</button>
+   </div>
+    </div>
+  <audio src="../auds/perfect_alarm (1).mp3"></audio>
+        </div>
+        
+       <a href="../index.html"> <button class="prev"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#00"><path d="m330-444 201 201-51 51-288-288 288-288 51 51-201 201h438v72H330Z"/></svg></button></a>
+        </div>
+  </div>    
+    <script>
+        let daraja = document.querySelector(".batareaq");
+        let alarmTime = null;
+        let alarmTimeout = null;
+        const audio = document.querySelector("audio")
+   
+
+        let stopInterval = setInterval(() => {
+    
+    let batteryPromise = navigator.getBattery();
+
+    batteryPromise.then((batteryObject) => {
+      let foiz =("Percentage", batteryObject.level);
+    daraja.textContent=`${foiz*100}`
+     
+    });
+  }, 1);
+
+
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('currentTime').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateTime, 100);
+        updateTime(); // Dastlabki vaqtni ko'rsatish
+
+        function setAlarm() {
+            const input = document.getElementById('alarmTime');
+            alarmTime = input.value;
+
+            if (!alarmTime) {
+                alert("Iltimos, vaqtni kiriting!");
+                return;
+            }
+
+            const now = new Date();
+            const alarmDate = new Date();
+            const [hours, minutes] = alarmTime.split(":");
+
+            alarmDate.setHours(hours);
+            alarmDate.setMinutes(minutes);
+            alarmDate.setSeconds(0);
+
+            if (alarmDate < now) {
+                alarmDate.setDate(alarmDate.getDate() + 1);
+            }
+
+            const timeToAlarm = alarmDate - now;
+
+            clearTimeout(alarmTimeout);
+            alarmTimeout = setTimeout(() => {
+                document.getElementById('message').textContent = "Budilnik vaqti keldi!";
+                playSound();
+                audio.play();
+            }, timeToAlarm);
+
+            document.getElementById('message').textContent = `Budilnik ${alarmTime} da o'rnatildi.`;
+        }
+
+        function playSound() {
+            audio.loop = true;
+            audio.play();
+            document.getElementById('controls').style.display = 'block';
+        }
+
+        function pauseSound() {
+            audio.pause();
+            document.getElementById('controls').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<style>
+        textarea {
+      width: 93% !important;
+      height: 100px;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+</style>
+<body>
+    <div class="phone_img_Div">
+        <img class="img_phone" src="../IPhone_14_Pro_vector.svg.png" alt="No img?">
+        <div style="background-color: black; background-image: none;" class="bac_phone_big">
+        <p class="batareaq">100%</p>
+        <img class="batareaw" src="../battery-icon-2048x1099-lemqsmr6.png" alt="">
+        <div style="display: flex;flex-direction: column; width: 100%; margin-top: 50px; height: 84%;">
+            <select id="fromLanguage">
+                <option value="en">English</option>
+                <option value="uz">O'zbek</option>
+                <option value="ru">Русский</option>
+              </select>
+              <textarea id="inputText" style="width: 100%;" placeholder="Matnni kiriting..."></textarea>
+              <select id="toLanguage">
+                <option value="uz">O'zbek</option>
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
+              </select>
+              <textarea id="outputText" placeholder="Tarjima..." readonly></textarea>
+              <button id="translateButton" style="margin-bottom: 10px;">Tarjima qilish</button>
+              <button id="copyButton" disabled>Nusxalash</button>
+        </div>
+        
+       <a href="../index.html"> <button class="prev"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#00"><path d="m330-444 201 201-51 51-288-288 288-288 51 51-201 201h438v72H330Z"/></svg></button></a>
+        </div>
+  </div>    
+  <script src="../js/translete.js"></script>
+</body>
+</html>
