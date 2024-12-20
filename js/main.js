@@ -30,9 +30,9 @@ else{
   BigTime.addEventListener("click", myFunction);
 
 function myFunction() {
-BlockScreen.setAttribute("style", "top:-750px;"); 
+BlockScreen.setAttribute("style", "display: none;"); 
 bottomScreen.setAttribute("style", "display: flex;justify-content: center;align-items: center;"); 
-open_screen.setAttribute("style","display: block;")
+open_screen.setAttribute("style","display: block;");
 }
  
 navigator.geolocation.getCurrentPosition(

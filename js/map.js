@@ -2,6 +2,15 @@ let daraja = document.querySelector('.batareaq');
 let time_elem =document.querySelector(".time_elem")
 console.log(daraja);
 
+let qaytishTugmasi= document.querySelector('.prev');
+
+
+qaytishTugmasi.addEventListener("click", () => {
+  // history.back();
+  history.go(-1);
+
+  
+});
 
 let batteryPromise = navigator.getBattery();
 

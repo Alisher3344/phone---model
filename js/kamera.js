@@ -1,34 +1,32 @@
-// Elementlarni tanlab olish
 const video = document.getElementById('video');
 const snapButton = document.getElementById('snap');
- 
 let daraja =document.querySelector(".batareaq")
+let qaytishTugmasi= document.querySelector('.prev');
 
-// Kamerani yoqish
+
+qaytishTugmasi.addEventListener("click", () => {
+  history.go(-1);
+});
+
 navigator.mediaDevices.getUserMedia({ video: true })
   .then(stream => {
-    video.srcObject = stream; // Videoni kameradan stream qilish
+    video.srcObject = stream;
   })
   .catch(err => {
     console.error('Kamera topilmadi yoki ruxsat berilmagan:', err);
   });
 
-// Rasmga olish va yuklab olish
 snapButton.addEventListener('click', () => {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
 
-  // Canvas o'lchamlarini video oqim o'lchamlariga moslash
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
 
-  // Canvasga rasmni chizish
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-  // Rasmni ma'lumot URL formatida olish
   const imageData = canvas.toDataURL('image/png');
 
-  // Rasmni yuklab olish uchun link yaratish
   const link = document.createElement('a');
   link.href = imageData;
   link.download = 'rasm.png';
@@ -44,3 +42,4 @@ let stopInterval = setInterval(() => {
    
   });
 }, 1);
+console.log(history);

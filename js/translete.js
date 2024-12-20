@@ -5,6 +5,15 @@ const copyButton = document.getElementById('copyButton');
  
 let daraja = document.querySelector(".batareaq");
 
+let qaytishTugmasi= document.querySelector('.prev');
+
+
+qaytishTugmasi.addEventListener("click", () => {
+  // history.back();
+  history.go(-1);
+
+  
+});
 
 translateButton.addEventListener('click', async () => {
   const fromLang = document.getElementById('fromLanguage').value;
